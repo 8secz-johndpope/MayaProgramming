@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E24F85C1A3C86080068F2C0 /* plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E24F85B1A3C86080068F2C0 /* plugin.cpp */; };
 		2E24F85E1A3C86090068F2C0 /* StdAfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E24F85D1A3C86090068F2C0 /* StdAfx.cpp */; };
+		2E24F8661A3DE44D0068F2C0 /* plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E24F85B1A3C86080068F2C0 /* plugin.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,8 +118,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E24F85C1A3C86080068F2C0 /* plugin.cpp in Sources */,
 				2E24F85E1A3C86090068F2C0 /* StdAfx.cpp in Sources */,
+				2E24F8661A3DE44D0068F2C0 /* plugin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
