@@ -46,11 +46,23 @@ protected:
     static MObject  aOutColor;  //outColorアトリビュート
 };
 
+//static変数を定義
+MObject MyShader::aColor;
+MObject MyShader::aBorder;
+MObject MyShader::aBorderArea;
+MObject MyShader::aNormalCamera;
+MObject MyShader::aRayDirection;
+MObject MyShader::aOutColor;
+
 //IDを定義。このIDは正しくはAutodeskから取得しなければならない
 MTypeId MyShader::id(0xab33);
 
 void *MyShader::creator(){
     return new MyShader();
+}
+
+void MyShader::postConstructor(){
+    setMPSafe(true);
 }
 
 //シェーダーの初期化
@@ -68,7 +80,7 @@ MStatus MyShader::initialize(){
     aBorder = nAttr.createColor("border", "b");
         MAKE_INPUT(nAttr);
         nAttr.setDefault(0.0,0.0,0.0);
-    addAttribute(aBorder);7
+    addAttribute(aBorder);
 
     //Float型を入力するバーを指定
     aBorderArea = nAttr.create("borderArea", "bar", MFnNumericData::kFloat, 0);
@@ -93,7 +105,7 @@ MStatus MyShader::initialize(){
     addAttribute(aNormalCamera);
     
     //RayDirectionはレンダリングのときのレイの方向
-    aRayDirection = nAttr.createPoint("rayDirection", "n"); //レイの方向ベクトル
+    aRayDirection = nAttr.createPoint("rayDirection", "rd"); //レイの方向ベクトル
         MAKE_INPUT(nAttr);
         nAttr.setHidden(true);
     addAttribute(aRayDirection);
@@ -121,9 +133,46 @@ MStatus MyShader::compute(const MPlug &plug, MDataBlock &block){
     if(plug != aOutColor){
         return MStatus::kUnknownParameter;
     }
+    //出力結果格納用変数
+    MFloatVector resultColor(0,0,0);
     
-    MFloatVector &rayDirection = block.inputValue(aRayDirection).asFloatVector();
+    //シーンから必要なデータを取得
+    MFloatVector &surfaceNormal = block.inputValue(aNormalCamera).asFloatVector();//法線方向
+    MFloatVector &rayDirection = block.inputValue(aRayDirection).asFloatVector();//レイの方向
     
+    MFloatVector &surfaceColor = block.inputValue(aColor).asFloatVector();//表面の色
+    MFloatVector &borderColor = block.inputValue(aBorder).asFloatVector();//境界線の色
+    
+    float borderArea = block.inputValue(aBorderArea).asFloat();//ボーダーの範囲
+    
+    //出力アトリビュートのためのハンドルを取得
+    MDataHandle outColorHandle = block.outputValue(aOutColor);
+    MFloatVector &outColor = outColorHandle.asFloatVector();
+    
+    
+    //出力はアトリビュート"surfaceColor"とする
+    resultColor = surfaceColor;
+    //ただし、法線ベクトルとレイのベクトルのなす角によっては変更する
+    float NL = surfaceNormal * rayDirection;
+    
+    
+    
+    
+    
+    if(NL > -borderArea && NL < borderArea){
+     //出力カラーをborderColorにする
+        resultColor = borderColor;
+    }
+    outColor = resultColor;
+    
+    
+    
+    
+    
+    //ハンドルを通じて通知
+    outColorHandle.setClean();
+    
+   return MStatus::kSuccess;
 }
 
 //-----------------------------------------------------------------------------
@@ -133,7 +182,16 @@ MStatus initializePlugin (MObject obj) {
 	//- registers all of the services that this plug-in provides with Maya.
 	//-		obj - a handle to the plug-in object (use MFnPlugin to access it)
 	MFnPlugin plugin (obj, _T("Vendor Name"), _T("Version"), _T("Any"));
-	//- Examples:
+    
+    const MString user_classify("shader/surface");
+    
+    plugin.registerNode("MyShader",
+                        MyShader::id,
+                        MyShader::creator,
+                        MyShader::initialize,
+                        MPxNode::kDependNode,
+                        &user_classify);
+    //- Examples:
 	//NodeRegisterOk(plugin.registerNode (_T("myNode"), myNode::id, myNode::creator, myNode::initialize)) ;
 	//NodeRegisterOk(myNode::registerMe (plugin)) ;
 
@@ -149,7 +207,7 @@ MStatus uninitializePlugin (MObject obj) {
 	//- deregisters all of the services that it was providing.
 	//-		obj - a handle to the plug-in object (use MFnPlugin to access it)
 	MFnPlugin plugin (obj) ;
-
+    plugin.deregisterNode(MyShader::id);
 	//- Examples:
 	//NodeUnregisterOk(plugin.deregisterNode (myNode::id)) ;
 	//NodeUnregisterOk(myNode::unregisterMe (plugin)) ;
