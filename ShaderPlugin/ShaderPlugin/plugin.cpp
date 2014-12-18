@@ -41,6 +41,7 @@ protected:
     static MObject  aBorderArea;
     static MObject  aNormalCamera;//面の法線ベクトル（カメラ座標系）
     static MObject  aRayDirection;  //レイの方向
+    static MObject diffusionCheck;//Diffuseのチェック
     
     //出力カラー
     static MObject  aOutColor;  //outColorアトリビュート
@@ -53,6 +54,7 @@ MObject MyShader::aBorderArea;
 MObject MyShader::aNormalCamera;
 MObject MyShader::aRayDirection;
 MObject MyShader::aOutColor;
+MObject MyShader::diffusionCheck;
 
 //IDを定義。このIDは正しくはAutodeskから取得しなければならない
 MTypeId MyShader::id(0xab33);
@@ -89,6 +91,12 @@ MStatus MyShader::initialize(){
         nAttr.setMax(1.0);//最大値
         nAttr.setMin(0.0);//最小値
     addAttribute(aBorderArea);
+    
+    diffusionCheck = nAttr.create("diffusion", "diff", MFnNumericData::kBoolean);
+        MAKE_INPUT(nAttr);
+        nAttr.setDefault(false);
+    addAttribute(diffusionCheck);
+    
     
     //aOutColorは出力用アトリビュート。出力用に属性を指定
     aOutColor = nAttr.createColor("outColor", "oc");
