@@ -93,197 +93,182 @@ void MyShader::postConstructor(){
 //シェーダーの初期化
 //アトリビュートの宣言や追加、入出力アトリビュートの定義
 MStatus MyShader::initialize(){
-    //アトリビュートを定義する。nAttrは”どのような名称のアトリビュートを定義するか”
-    MFnNumericAttribute nAttr;
-    
-    //入力色を指定する
-    aColor = nAttr.createColor("color", "c");//color input attribute
-        MAKE_INPUT(nAttr);
-        nAttr.setDefault(0.5,0.5,0.5);
-    addAttribute(aColor);//Mayaに反映させる
-    
-    aBorder = nAttr.createColor("border", "b");
-        MAKE_INPUT(nAttr);
-        nAttr.setDefault(0.0,0.0,0.0);
-    addAttribute(aBorder);
-
-    //Float型を入力するバーを指定
-    aBorderArea = nAttr.create("borderArea", "bar", MFnNumericData::kFloat, 0);
-        MAKE_INPUT(nAttr);
-        nAttr.setDefault(0.1);//デフォルト値を指定
-        nAttr.setMax(1.0);//最大値
-        nAttr.setMin(0.0);//最小値
-    addAttribute(aBorderArea);
-    
-//    diffusionCheck = nAttr.create("diffusion", "diff", MFnNumericData::kBoolean);
-//        MAKE_INPUT(nAttr);
-//        nAttr.setDefault(false);
-//    addAttribute(diffusionCheck);
-    
-    
-    //aOutColorは出力用アトリビュート。出力用に属性を指定
-    aOutColor = nAttr.createColor("outColor", "oc");
-        nAttr.setStorable(false);
-        nAttr.setHidden(false);
-        nAttr.setReadable(true);//読み込み可能にする
-        nAttr.setWritable(false);//書き込みを禁止にする
-    addAttribute(aOutColor);
-    
-    //normalCameraはカメラ座標系における面の法線ベクトル
-    aNormalCamera = nAttr.createPoint("normalCamera", "n");
-        MAKE_INPUT(nAttr);
-        nAttr.setHidden(true);
-    addAttribute(aNormalCamera);
-    
-    //RayDirectionはレンダリングのときのレイの方向
-    aRayDirection = nAttr.createPoint("rayDirection", "rd"); //レイの方向ベクトル
-        MAKE_INPUT(nAttr);
-        nAttr.setHidden(true);
-    addAttribute(aRayDirection);
-    
-    
-    //===================ライトアトリビュートの設定===========================
-    
-    //ライトは最終的にaLightDataがあれば良いが、aLightDataには複数の子アトリビュートがつくためそれを全て宣言する
-    aLightDirection = nAttr.createPoint("lightDirection", "ld");
-    MAKE_INPUT(nAttr);
-    nAttr.setHidden(true);
-    aLightIntensity = nAttr.createColor("lightIntensity", "li");
-    MAKE_INPUT(nAttr);
-    nAttr.setHidden(true);
-    aLightAmbient = nAttr.create("lightAmbient", "la", MFnNumericData::kBoolean);
-    MAKE_INPUT(nAttr);
-    nAttr.setHidden(true);
-    aLightDiffuse = nAttr.create("lightDiffuse", "ldu", MFnNumericData::kBoolean);
-    MAKE_INPUT(nAttr);
-    nAttr.setHidden(true);
-    aLightSpecular = nAttr.create("lightSpecular", "ls", MFnNumericData::kBoolean);
-    MAKE_INPUT(nAttr);
-    nAttr.setHidden(true);
-    aLightShadowFraction = nAttr.create("lightShadowFraction", "lsf", MFnNumericData::kFloat);
-    MAKE_INPUT(nAttr);
-    nAttr.setHidden(true);
-    aPreShadowIntensity = nAttr.create("preShadowIntensity", "psi", MFnNumericData::kFloat);
-    MAKE_INPUT(nAttr);
-    nAttr.setHidden(true);
-    aLightBlindData = nAttr.create("lightBlindData", "lbld", MFnNumericData::kLong);
-    MAKE_INPUT(nAttr);
-    nAttr.setHidden(true);
+    MStatus status;
 
     
+	// ƒAƒgƒŠƒrƒ…[ƒg‚ð’è‹`‚·‚éBnAttr‚Íu‚Ç‚Ì‚æ‚¤‚È–¼Ì‚ÌƒAƒgƒŠƒrƒ…[ƒg‚ð’è‹`‚·‚é‚©v
+	// ‚µ‚©s‚í‚È‚¸AMaya–{‘Ì‚É‚Í”½‰f‚µ‚È‚¢BMaya‚É”½‰f‚·‚é‚É‚ÍAaddAttribute‚ª•K—vB
+	MFnNumericAttribute nAttr;
     
-    MFnLightDataAttribute lAttr;
-    aLightData = lAttr.create("lightDataArray", "ltd",
+	// colorƒAƒgƒŠƒrƒ…[ƒg‚ð’è‹`BƒfƒtƒHƒ‹ƒg’l‚Æ‚µ‚Ä(0.5, 0.5, 0.5)‚ðÝ’èB
+	aColor = nAttr.createColor("color", "c");
+	MAKE_INPUT(nAttr);
+	nAttr.setDefault(0.5, 0.5, 0.5);
+	addAttribute(aColor);
+    
+	aBorder = nAttr.createColor("border", "b");
+	MAKE_INPUT(nAttr);
+	nAttr.setDefault(1.0, 1.0, 0.8);
+	addAttribute(aBorder);
+    
+	// ƒXƒJƒ‰[‚Å‚ ‚éfloat‚ð’è‹`BsetMinAsetMax‚É‚æ‚èƒXƒ‰ƒCƒ_‚ðŽ©“®“I‚ÉÝ’èB
+	aBorderArea = nAttr.create("borderArea", "bar", MFnNumericData::kFloat, 0);
+	MAKE_INPUT(nAttr);
+	nAttr.setDefault(0.1);
+	nAttr.setMin(0.0);
+	nAttr.setMax(1.0);
+	addAttribute(aBorderArea);
+    
+	// aOutColor‚Ío—Í—pƒAƒgƒŠƒrƒ…[ƒgBo—Í—p‚É‘®«‚ðÝ’è‚·‚éB
+	aOutColor = nAttr.createColor("outColor", "oc");
+	nAttr.setStorable(false);
+	nAttr.setHidden(false);
+	nAttr.setReadable(true);
+	nAttr.setWritable(false);
+	addAttribute(aOutColor);
+    
+	// normalCamera‚ÍAƒJƒƒ‰À•WŒn‚É‚¨‚¯‚é–Ê‚Ì–@üƒxƒNƒgƒ‹B
+	aNormalCamera = nAttr.createPoint("normalCamera", "n");
+	MAKE_INPUT(nAttr);
+	nAttr.setHidden(true);
+	addAttribute(aNormalCamera);
+    
+	// rayDirection‚ÍƒŒƒ“ƒ_ƒŠƒ“ƒOŽž‚ÌƒŒƒC‚Ì•ûŒü‚ðŽ¦‚·
+	aRayDirection = nAttr.createPoint("rayDirection", "rd");
+	MAKE_INPUT(nAttr);
+	nAttr.setHidden(true);
+	addAttribute(aRayDirection);
+    
+	// ƒ‰ƒCƒg‚Ì‚½‚ß‚ÌƒAƒgƒŠƒrƒ…[ƒgBƒ‰ƒCƒg‚ÍÅI“I‚ÉaLightData‚ª‚ ‚ê‚Î‚æ‚¢‚ªA
+	// aLightData‚É‚Í•¡”‚ÌŽqƒAƒgƒŠƒrƒ…[ƒg‚ª•t‚­B‚»‚ê‚ç‚·‚×‚Ä‚ðéŒ¾‚·‚éB
+	aLightDirection = nAttr.createPoint("lightDirection", "ld");
+	MAKE_INPUT(nAttr);
+	nAttr.setHidden(true);
+    
+	aLightIntensity = nAttr.createColor("lightIntensity", "li");
+	MAKE_INPUT(nAttr);
+	nAttr.setHidden(true);
+    
+	aLightAmbient = nAttr.create("lightAmbient", "la", MFnNumericData::kBoolean);
+	MAKE_INPUT(nAttr);
+	nAttr.setHidden(true);
+    
+	aLightDiffuse = nAttr.create("lightDiffuse", "ldu", MFnNumericData::kBoolean);
+	MAKE_INPUT(nAttr);
+	nAttr.setHidden(true);
+    
+	aLightSpecular = nAttr.create("lightSpecular", "ls", MFnNumericData::kBoolean);
+	MAKE_INPUT(nAttr);
+	nAttr.setHidden(true);
+    
+	aLightShadowFraction = nAttr.create("lightShadowFraction", "lsf", MFnNumericData::kFloat);
+	MAKE_INPUT(nAttr);
+	nAttr.setHidden(true);
+    
+	aPreShadowIntensity = nAttr.create("preShadowIntensity", "psi", MFnNumericData::kFloat);
+	MAKE_INPUT(nAttr);
+	nAttr.setHidden(true);
+    
+	aLightBlindData = nAttr.create("lightBlindData", "lbld", MFnNumericData::kLong);
+	MAKE_INPUT(nAttr);
+	nAttr.setHidden(true);
+    
+	MFnLightDataAttribute lAttr;
+	aLightData = lAttr.create("lightDataArray", "ltd",
                               aLightDirection, aLightIntensity,
-                              aLightAmbient, aLightDiffuse,
-                              aLightSpecular, aLightShadowFraction,aPreShadowIntensity,
+                              aLightAmbient, aLightDiffuse, aLightSpecular,
+                              aLightShadowFraction, aPreShadowIntensity,
                               aLightBlindData);
-    lAttr.setArray(true);//ひとつのシェーダーに複数のライトを設定可能にする
-    lAttr.setStorable(false);
-    lAttr.setHidden(true);
-    lAttr.setDefault(0, 0, 0, 0, 0, 0, true, true, false, 0, 1, 0);
-    addAttribute(aLightData);//ライトデータのみ追加する
+	lAttr.setArray(true);		// ˆê‚Â‚ÌƒVƒF[ƒ_‚É‚Í•¡”‚Ìƒ‰ƒCƒg‚ªÚ‘±‚Å‚«‚é
+	lAttr.setStorable(false);
+	lAttr.setHidden(true);
+	lAttr.setDefault(0, 0, 0,  0, 0, 0,  true, true, false,  0, 1,  0);
+	addAttribute(aLightData);	// ƒ‰ƒCƒg‚ÍAalightData‚Ì‚Ý‚ð’Ç‰Á‚·‚éB
     
+	// “ü—ÍƒAƒgƒŠƒrƒ…[ƒg‚Æo—ÍƒAƒgƒŠƒrƒ…[ƒg‚ÌŠÖŒW‚ðéŒ¾B
+	// ‚ ‚é“ü—Í‚ªo—Í‚É‰e‹¿‚·‚é‚È‚ç‚ÎAéŒ¾‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B
+	attributeAffects(aColor, aOutColor);
+	attributeAffects(aBorder, aOutColor);
+	attributeAffects(aBorderArea, aBorder);
+	attributeAffects(aNormalCamera, aOutColor);
+	attributeAffects(aRayDirection, aOutColor);
     
+	attributeAffects(aLightData, aOutColor);
+	attributeAffects(aLightAmbient, aOutColor);
+	attributeAffects(aLightDiffuse, aOutColor);
+	attributeAffects(aLightSpecular, aOutColor);
+	attributeAffects(aLightDirection, aOutColor);
+	attributeAffects(aLightShadowFraction, aOutColor);
+	attributeAffects(aPreShadowIntensity, aOutColor);
+	attributeAffects(aLightBlindData, aOutColor);
     
-    //ここまでが設定
-    
-    //ここから影響関係の設定
-    //入力アトリビュートと出力アトリビュートの関係を宣言
-    //ある入力が出力に影響するならば、宣言しなければならない
-    attributeAffects(aColor, aOutColor);
-    attributeAffects(aBorder, aOutColor);
-    attributeAffects(aBorderArea, aBorder);
-    attributeAffects(aNormalCamera, aOutColor);
-    attributeAffects(aRayDirection, aOutColor);
-    //ここからライトの入力アトリビュートと出力アトリビュートの関係を宣言する
-    attributeAffects(aLightData, aOutColor);
-    attributeAffects(aLightAmbient, aOutColor);
-    attributeAffects(aLightDiffuse, aOutColor);
-    attributeAffects(aLightSpecular, aOutColor);
-    attributeAffects(aLightDirection, aOutColor);
-    attributeAffects(aLightShadowFraction, aOutColor);
-    attributeAffects(aPreShadowIntensity, aOutColor);
-    attributeAffects(aLightBlindData, aOutColor);
-    
-    
-    return MStatus::kSuccess;
+	return MStatus::kSuccess;
 }
 
 //レンダリング計算を行う（レイとサーフェスが交差する）たびに呼び出される。
 //plug :　どのアトリビュートのための計算処理か
 //block : シーンデータ
 MStatus MyShader::compute(const MPlug &plug, MDataBlock &block){
+    MStatus status;
     
-    //もし計算対象のアトリビュートがaOutColorに対してでは無い場合は強制終了
-    if(plug != aOutColor){
-        return MStatus::kUnknownParameter;
-    }
-    //出力結果格納用変数
-    MFloatVector resultColor(0,0,0);
+	if (! (plug == aOutColor) ) {
+		return MStatus::kUnknownParameter;
+	}
     
-    //シーンから必要なデータを取得
-    MFloatVector &surfaceNormal = block.inputValue(aNormalCamera).asFloatVector();//法線方向
-    MFloatVector &rayDirection = block.inputValue(aRayDirection).asFloatVector();//レイの方向
+	// ƒVƒF[ƒfƒBƒ“ƒOŒ‹‰Ê‚Ì‚½‚ß‚Ì•Ï”
+	MFloatVector resultColor(0, 0, 0);
+	// ƒV[ƒ“‚©‚ç•K—v‚Èƒf[ƒ^‚ðŽæ“¾‚·‚é
+	MFloatVector &surfaceNormal = block.inputValue(aNormalCamera).asFloatVector();
+	MFloatVector &surfaceColor = block.inputValue(aColor).asFloatVector();
+	MFloatVector &borderColor = block.inputValue(aBorder).asFloatVector();
+	MFloatVector &rayDirection = block.inputValue(aRayDirection).asFloatVector();
+	float borderArea = block.inputValue(aBorderArea).asFloat();
     
-    MFloatVector &surfaceColor = block.inputValue(aColor).asFloatVector();//表面の色
-    MFloatVector &borderColor = block.inputValue(aBorder).asFloatVector();//境界線の色
-    float borderArea = block.inputValue(aBorderArea).asFloat();//ボーダーの範囲
+	// o—ÍƒAƒgƒŠƒrƒ…[ƒg‚Ì‚½‚ß‚Ìƒnƒ“ƒhƒ‹‚ðŽæ“¾
+	MDataHandle outColorHandle = block.outputValue(aOutColor);
+	MFloatVector &outColor = outColorHandle.asFloatVector();
     
+	// ƒ‰ƒCƒg“ü—ÍƒAƒgƒŠƒrƒ…[ƒgBƒ‰ƒCƒg‚Í•¡”‚ ‚è‚¤‚é‚Ì‚Å”z—ñ(Array)‚Æ‚È‚é
+	MArrayDataHandle lightData = block.inputArrayValue(aLightData);
+	// ƒ‰ƒCƒg‚ÌŒÂ”‚ð”‚¦‚é
+	int numLights = lightData.elementCount();
+	//cout << "light num: " << numLights << endl;
+	// o—ÍƒJƒ‰[‚ÍAƒ‰ƒ“ƒo[ƒgŒvŽZ‚ðs‚¤B
+	// ‚½‚¾‚µAƒŒƒC‚Ì•ûŒüƒxƒNƒgƒ‹‚ÆƒT[ƒtƒF[ƒX‚Ì–@üƒxƒNƒgƒ‹‚Ìˆ×‚·Šp‚É‚æ‚Á‚Ä‚Í
+	// o—ÍƒJƒ‰[‚Í•ÏX‚·‚éB
+	// ƒ‰ƒCƒg‚Ì”‚¾‚¯AÆ“xŒvŽZ‚ðs‚¤BƒCƒ‹ƒ~ƒiƒ“ƒX(illuminance)ƒ‹[ƒv‚Æ‚àŒ¾‚¤B
     
-    
-    
-    //出力アトリビュートのためのハンドルを取得
-    MDataHandle outColorHandle = block.outputValue(aOutColor);
-    MFloatVector &outColor = outColorHandle.asFloatVector();
-    
-    
-    //出力はアトリビュート"surfaceColor"とする
-        resultColor = surfaceColor;
-    
-    
-
-        //Diffusionの処理
-        MArrayDataHandle LightHandle = block.inputArrayValue(aLightData);
-        int lightCount = LightHandle.elementCount();
-    
-        for(int ii=0;ii< lightCount;ii++){
-            MDataHandle currentLight = LightHandle.inputValue();
-            
-            MFloatVector &lightIntensity = currentLight.child(aLightIntensity).asFloatVector();
-            MFloatVector &lightDirection = currentLight.child(aLightDirection).asFloatVector();
-            
-            
-            float NL = lightDirection * surfaceNormal;//N•L value
-            MFloatVector lambertDiffuse;
-            lambertDiffuse[0] = NL * lightIntensity[0];
-            lambertDiffuse[1] = NL * lightIntensity[1];
-            lambertDiffuse[2] = NL * lightIntensity[2];
-            
-            resultColor += lambertDiffuse;
-            
-            LightHandle.next();//次のライトへ
-        }
-    
-    
+    cout << "LightNumbers: " <<numLights << endl;
+	for(int ii = 0; ii < numLights; ii++) {
+		MDataHandle currentLight = lightData.inputValue();	// Œ»Ý‚Ìƒ‰ƒCƒgî•ñ‚ðŽæ“¾
+		MFloatVector &lightIntensity = currentLight.child(aLightIntensity).asFloatVector();
+		MFloatVector &lightDirection = currentLight.child(aLightDirection).asFloatVector();
         
-    //ただし、法線ベクトルとレイのベクトルのなす角によっては変更する
-        float NR = surfaceNormal * rayDirection;
+		// diffuseŒvŽZ‚ð‚·‚éBŠgŽU”½ŽË“üŽËŒõ–(ƒ‰ƒCƒg‚Ö‚Ì•ûŒüE–Ê‚Ì–@üƒxƒNƒgƒ‹j
+		float cosln = lightDirection * surfaceNormal;		// ƒ‰ƒCƒg•ûŒü‚Æ–@ü‚Ì“àÏ
+		MFloatVector lambert;
+		lambert[0] = cosln * lightIntensity[0];
+		lambert[1] = cosln * lightIntensity[1];
+		lambert[2] = cosln * lightIntensity[2];
+        
+		// ŒvŽZŒ‹‰Ê‚ðŒ‹‰Ê‚É‰Á‚¦‚é
+		resultColor += lambert;
+		// ŽŸ‚Ìƒ‰ƒCƒg‚ÉˆÚ“®
+		lightData.next();
+	}
     
+	// ƒGƒbƒW•”•ª‚ÌF‚ð•Ï‚¦‚é
+	float aaa = surfaceNormal * rayDirection;
+	// ˆ×‚·Šp‚ªˆê’è”ÍˆÍ‚ð’´‚¦‚Ä‚¢‚ê‚ÎA
+	if (aaa < borderArea && aaa > -borderArea) {
+		// o—ÍƒJƒ‰[‚ÉborderColor‚ð‰Á‚¦‚é
+		resultColor += borderColor;
+	}
+	outColor = resultColor;
+	// ƒnƒ“ƒhƒ‹‚ð’Ê‚¶‚Ä’Ê’m
+	outColorHandle.setClean();
     
-        if(NR > -borderArea && NR < borderArea){
-         //出力カラーをborderColorにする
-            resultColor += borderColor;
-        }
-    
-    
-    //最終的な色を出力
-    outColor = resultColor;
-    
-    //ハンドルを通じて通知
-    outColorHandle.setClean();
-    
-   return MStatus::kSuccess;
+	return MStatus::kSuccess;
 }
 
 //-----------------------------------------------------------------------------
