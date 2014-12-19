@@ -41,10 +41,22 @@ protected:
     static MObject  aBorderArea;
     static MObject  aNormalCamera;//面の法線ベクトル（カメラ座標系）
     static MObject  aRayDirection;  //レイの方向
-    static MObject diffusionCheck;//Diffuseのチェック
+//    static MObject diffusionCheck;//Diffuseのチェック
     
     //出力カラー
     static MObject  aOutColor;  //outColorアトリビュート
+    
+    
+//==================ライト情報のための入力アトリビュート======================
+    static MObject aLightData;
+    static MObject aLightDirection;
+    static MObject aLightAmbient;
+    static MObject aLightDiffuse;
+    static MObject aLightSpecular;
+    static MObject aLightIntensity;
+    static MObject aLightShadowFraction;
+    static MObject aPreShadowIntensity;
+    static MObject aLightBlindData;
 };
 
 //static変数を定義
@@ -54,7 +66,18 @@ MObject MyShader::aBorderArea;
 MObject MyShader::aNormalCamera;
 MObject MyShader::aRayDirection;
 MObject MyShader::aOutColor;
-MObject MyShader::diffusionCheck;
+//MObject MyShader::diffusionCheck;//Diffusionの可否
+//================ライトの入力アトリビュート================
+MObject MyShader::aLightData;
+MObject MyShader::aLightDirection;
+MObject MyShader::aLightAmbient;
+MObject MyShader::aLightDiffuse;
+MObject MyShader::aLightSpecular;
+MObject MyShader::aLightIntensity;
+MObject MyShader::aLightShadowFraction;
+MObject MyShader::aPreShadowIntensity;
+MObject MyShader::aLightBlindData;
+
 
 //IDを定義。このIDは正しくはAutodeskから取得しなければならない
 MTypeId MyShader::id(0xab33);
@@ -92,10 +115,10 @@ MStatus MyShader::initialize(){
         nAttr.setMin(0.0);//最小値
     addAttribute(aBorderArea);
     
-    diffusionCheck = nAttr.create("diffusion", "diff", MFnNumericData::kBoolean);
-        MAKE_INPUT(nAttr);
-        nAttr.setDefault(false);
-    addAttribute(diffusionCheck);
+//    diffusionCheck = nAttr.create("diffusion", "diff", MFnNumericData::kBoolean);
+//        MAKE_INPUT(nAttr);
+//        nAttr.setDefault(false);
+//    addAttribute(diffusionCheck);
     
     
     //aOutColorは出力用アトリビュート。出力用に属性を指定
@@ -118,6 +141,51 @@ MStatus MyShader::initialize(){
         nAttr.setHidden(true);
     addAttribute(aRayDirection);
     
+    
+    //===================ライトアトリビュートの設定===========================
+    
+    //ライトは最終的にaLightDataがあれば良いが、aLightDataには複数の子アトリビュートがつくためそれを全て宣言する
+    aLightDirection = nAttr.createPoint("lightDirection", "ld");
+    MAKE_INPUT(nAttr);
+    nAttr.setHidden(true);
+    aLightIntensity = nAttr.createColor("lightIntensity", "li");
+    MAKE_INPUT(nAttr);
+    nAttr.setHidden(true);
+    aLightAmbient = nAttr.create("lightAmbient", "la", MFnNumericData::kBoolean);
+    MAKE_INPUT(nAttr);
+    nAttr.setHidden(true);
+    aLightDiffuse = nAttr.create("lightDiffuse", "ldu", MFnNumericData::kBoolean);
+    MAKE_INPUT(nAttr);
+    nAttr.setHidden(true);
+    aLightSpecular = nAttr.create("lightSpecular", "ls", MFnNumericData::kBoolean);
+    MAKE_INPUT(nAttr);
+    nAttr.setHidden(true);
+    aLightShadowFraction = nAttr.create("lightShadowFraction", "lsf", MFnNumericData::kFloat);
+    MAKE_INPUT(nAttr);
+    nAttr.setHidden(true);
+    aPreShadowIntensity = nAttr.create("preShadowIntensity", "psi", MFnNumericData::kFloat);
+    MAKE_INPUT(nAttr);
+    nAttr.setHidden(true);
+    aLightBlindData = nAttr.create("lightBlindData", "lbld", MFnNumericData::kLong);
+    MAKE_INPUT(nAttr);
+    nAttr.setHidden(true);
+
+    
+    
+    MFnLightDataAttribute lAttr;
+    aLightData = lAttr.create("lightDataArray", "ltd",
+                              aLightDirection, aLightIntensity,
+                              aLightAmbient, aLightDiffuse,
+                              aLightSpecular, aLightShadowFraction,aPreShadowIntensity,
+                              aLightBlindData);
+    lAttr.setArray(true);//ひとつのシェーダーに複数のライトを設定可能にする
+    lAttr.setStorable(false);
+    lAttr.setHidden(true);
+    lAttr.setDefault(0, 0, 0, 0, 0, 0, true, true, false, 0, 1, 0);
+    addAttribute(aLightData);//ライトデータのみ追加する
+    
+    
+    
     //ここまでが設定
     
     //ここから影響関係の設定
@@ -128,6 +196,16 @@ MStatus MyShader::initialize(){
     attributeAffects(aBorderArea, aBorder);
     attributeAffects(aNormalCamera, aOutColor);
     attributeAffects(aRayDirection, aOutColor);
+    //ここからライトの入力アトリビュートと出力アトリビュートの関係を宣言する
+    attributeAffects(aLightData, aOutColor);
+    attributeAffects(aLightAmbient, aOutColor);
+    attributeAffects(aLightDiffuse, aOutColor);
+    attributeAffects(aLightSpecular, aOutColor);
+    attributeAffects(aLightDirection, aOutColor);
+    attributeAffects(aLightShadowFraction, aOutColor);
+    attributeAffects(aPreShadowIntensity, aOutColor);
+    attributeAffects(aLightBlindData, aOutColor);
+    
     
     return MStatus::kSuccess;
 }
@@ -150,8 +228,10 @@ MStatus MyShader::compute(const MPlug &plug, MDataBlock &block){
     
     MFloatVector &surfaceColor = block.inputValue(aColor).asFloatVector();//表面の色
     MFloatVector &borderColor = block.inputValue(aBorder).asFloatVector();//境界線の色
-    
     float borderArea = block.inputValue(aBorderArea).asFloat();//ボーダーの範囲
+    
+    
+    
     
     //出力アトリビュートのためのハンドルを取得
     MDataHandle outColorHandle = block.outputValue(aOutColor);
@@ -159,23 +239,46 @@ MStatus MyShader::compute(const MPlug &plug, MDataBlock &block){
     
     
     //出力はアトリビュート"surfaceColor"とする
-    resultColor = surfaceColor;
+        resultColor = surfaceColor;
+    
+    
+
+        //Diffusionの処理
+        MArrayDataHandle LightHandle = block.inputArrayValue(aLightData);
+        int lightCount = LightHandle.elementCount();
+    
+        for(int ii=0;ii< lightCount;ii++){
+            MDataHandle currentLight = LightHandle.inputValue();
+            
+            MFloatVector &lightIntensity = currentLight.child(aLightIntensity).asFloatVector();
+            MFloatVector &lightDirection = currentLight.child(aLightDirection).asFloatVector();
+            
+            
+            float NL = lightDirection * surfaceNormal;//N•L value
+            MFloatVector lambertDiffuse;
+            lambertDiffuse[0] = NL * lightIntensity[0];
+            lambertDiffuse[1] = NL * lightIntensity[1];
+            lambertDiffuse[2] = NL * lightIntensity[2];
+            
+            resultColor += lambertDiffuse;
+            
+            LightHandle.next();//次のライトへ
+        }
+    
+    
+        
     //ただし、法線ベクトルとレイのベクトルのなす角によっては変更する
-    float NL = surfaceNormal * rayDirection;
+        float NR = surfaceNormal * rayDirection;
     
     
+        if(NR > -borderArea && NR < borderArea){
+         //出力カラーをborderColorにする
+            resultColor += borderColor;
+        }
     
     
-    
-    if(NL > -borderArea && NL < borderArea){
-     //出力カラーをborderColorにする
-        resultColor = borderColor;
-    }
+    //最終的な色を出力
     outColor = resultColor;
-    
-    
-    
-    
     
     //ハンドルを通じて通知
     outColorHandle.setClean();
