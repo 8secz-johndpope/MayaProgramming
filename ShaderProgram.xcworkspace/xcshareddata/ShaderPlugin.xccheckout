@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DC7DE069-8107-4589-BCBF-1784179F6E87</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ShaderPlugin</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0EF838567F31308FB7D381E42D1E1094E918FF88</key>
+		<string>https://github.com/Hare8563/MayaProgramming.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ShaderPlugin/ShaderPlugin.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0EF838567F31308FB7D381E42D1E1094E918FF88</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Hare8563/MayaProgramming.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0EF838567F31308FB7D381E42D1E1094E918FF88</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0EF838567F31308FB7D381E42D1E1094E918FF88</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MayaProgramming</string>
+		</dict>
+	</array>
+</dict>
+</plist>

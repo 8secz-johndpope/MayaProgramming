@@ -295,6 +295,7 @@
 				2E24F8651A3C86090068F2C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
