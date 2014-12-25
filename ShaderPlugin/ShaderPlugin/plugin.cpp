@@ -9,8 +9,8 @@
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
 
-#include <maya/MFnPlugin.h>
 
+#include <maya/MFnPlugin.h>
 
 /**
  アトリビュートを入力可能にするマクロ
@@ -24,17 +24,17 @@
    CHECK_MSTATUS( __x__.setReadable(true));
 
 #define MAKE_LIGHT_INPUT(__x__) \
-CHECK_MSTATUS( __x__.setKeyable(true));\
-CHECK_MSTATUS( __x__.setStorable(false));\
-CHECK_MSTATUS( __x__.setWritable(false));\
-CHECK_MSTATUS( __x__.setReadable(true));
+CHECK_MSTATUS(__x__.setStorable(false));\
+CHECK_MSTATUS(__x__.setHidden(true));\
+CHECK_MSTATUS(__x__.setReadable(true));\
+CHECK_MSTATUS(__x__.setWritable(false));
 
 class MyShader : public MPxNode{
 public:
     MyShader(){};//コンストラクタ
     virtual ~MyShader(){};//デストラクタ
     static void* creator();//ノードが作られたときにノードの実体を作って返す
-    virtual MStatus compute(const MPlug &plug, MDataBlock &block);//ノードが実行する計算、処理を記述
+    virtual MStatus compute(const MPlug&, MDataBlock&);//ノードが実行する計算、処理を記述
     static MStatus initialize();//ノードに必要なアトリビュートの設定、登録
     
     virtual void postConstructor();
@@ -86,7 +86,7 @@ MObject MyShader::aLightBlindData;
 
 
 //IDを定義。このIDは正しくはAutodeskから取得しなければならない
-MTypeId MyShader::id(0xab33);
+MTypeId MyShader::id(0x81000);
 
 void *MyShader::creator(){
     return new MyShader();
@@ -99,8 +99,12 @@ void MyShader::postConstructor(){
 //シェーダーの初期化
 //アトリビュートの宣言や追加、入出力アトリビュートの定義
 MStatus MyShader::initialize(){
-    //アトリビュートを定義する。nAttrは”どのような名称のアトリビュートを定義するか”
+    
     MFnNumericAttribute nAttr;
+    MFnLightDataAttribute lAttr;
+    
+    MStatus status;
+    //アトリビュートを定義する。nAttrは”どのような名称のアトリビュートを定義するか”
     
     //入力色を指定する
     aColor = nAttr.createColor("color", "c");//color input attribute
@@ -120,11 +124,6 @@ MStatus MyShader::initialize(){
         nAttr.setMax(1.0);//最大値
         nAttr.setMin(0.0);//最小値
     addAttribute(aBorderArea);
-    
-//    diffusionCheck = nAttr.create("diffusion", "diff", MFnNumericData::kBoolean);
-//        MAKE_INPUT(nAttr);
-//        nAttr.setDefault(false);
-//    addAttribute(diffusionCheck);
     
     
     //aOutColorは出力用アトリビュート。出力用に属性を指定
@@ -151,46 +150,50 @@ MStatus MyShader::initialize(){
     //===================ライトアトリビュートの設定===========================
     
     //ライトは最終的にaLightDataがあれば良いが、aLightDataには複数の子アトリビュートがつくためそれを全て宣言する
-    aLightDirection = nAttr.createPoint("lightDirection", "ld");
-    MAKE_INPUT(nAttr);
-    nAttr.setHidden(true);
     
+    aLightDirection = nAttr.createPoint("lightDirection", "ld", &status);
+    CHECK_MSTATUS(status);
+    MAKE_LIGHT_INPUT(nAttr);
+    CHECK_MSTATUS(nAttr.setDefault(1.0f, 1.0f, 1.0f));
     
     aLightIntensity = nAttr.createColor("lightIntensity", "li");
     MAKE_LIGHT_INPUT(nAttr);
-    nAttr.setHidden(true);
-    aLightAmbient = nAttr.create("lightAmbient", "la", MFnNumericData::kBoolean);
+    CHECK_MSTATUS(nAttr.setDefault(1.0f, 1.0f, 1.0f));
+    
+    aLightAmbient = nAttr.create("lightAmbient", "la", MFnNumericData::kBoolean,0);
     MAKE_LIGHT_INPUT(nAttr);
-    nAttr.setHidden(true);
-    aLightDiffuse = nAttr.create("lightDiffuse", "ldu", MFnNumericData::kBoolean);
+    CHECK_MSTATUS(nAttr.setDefault(true));
+    
+    aLightDiffuse = nAttr.create("lightDiffuse", "ldu", MFnNumericData::kBoolean,0);
     MAKE_LIGHT_INPUT(nAttr);
-    nAttr.setHidden(true);
-    aLightSpecular = nAttr.create("lightSpecular", "ls", MFnNumericData::kBoolean);
+    CHECK_MSTATUS(nAttr.setDefault(true));
+    
+    aLightSpecular = nAttr.create("lightSpecular", "ls", MFnNumericData::kBoolean,0);
     MAKE_LIGHT_INPUT(nAttr);
-    nAttr.setHidden(true);
-    aLightShadowFraction = nAttr.create("lightShadowFraction", "lsf", MFnNumericData::kFloat);
+    CHECK_MSTATUS(nAttr.setDefault(true));
+    
+    aLightShadowFraction = nAttr.create("lightShadowFraction", "lsf", MFnNumericData::kFloat,0);
     MAKE_LIGHT_INPUT(nAttr);
-    nAttr.setHidden(true);
-    aPreShadowIntensity = nAttr.create("preShadowIntensity", "psi", MFnNumericData::kFloat);
+    CHECK_MSTATUS(nAttr.setDefault(1.0f));
+    
+    aPreShadowIntensity = nAttr.create("preShadowIntensity", "psi", MFnNumericData::kFloat,0);
     MAKE_LIGHT_INPUT(nAttr);
-    nAttr.setHidden(true);
-    aLightBlindData = nAttr.create("lightBlindData", "lbld", MFnNumericData::kLong);
+    CHECK_MSTATUS(nAttr.setDefault(1.0f));
+    
+    aLightBlindData = nAttr.createAddr("lightBlindData", "lbld", &status);
+    CHECK_MSTATUS(status);
     MAKE_LIGHT_INPUT(nAttr);
-    nAttr.setHidden(true);
 
     
-    
-    MFnLightDataAttribute lAttr;
-    aLightData = lAttr.create("lightDataArray", "ltd",
-                              aLightDirection, aLightIntensity,
-                              aLightAmbient, aLightDiffuse,
-                              aLightSpecular, aLightShadowFraction,aPreShadowIntensity,
-                              aLightBlindData);
-    lAttr.setArray(true);//ひとつのシェーダーに複数のライトを設定可能にする
-    lAttr.setStorable(false);
-    lAttr.setHidden(false);
-    lAttr.setDefault(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, true, true, false, 0, 1, 0);
-    
+    aLightData = lAttr.create( "lightDataArray", "ltd", aLightDirection,
+                              aLightIntensity, aLightAmbient, aLightDiffuse, aLightSpecular,
+                              aLightShadowFraction, aPreShadowIntensity, aLightBlindData, &status);
+    CHECK_MSTATUS(status);
+    CHECK_MSTATUS( lAttr.setArray( true ) );
+    CHECK_MSTATUS( lAttr.setStorable( false ) );
+    CHECK_MSTATUS( lAttr.setHidden( true ) );
+    CHECK_MSTATUS( lAttr.setDefault( 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+                                    true, true, false, 1.0f, 1.0f, NULL ) );
     
     addAttribute(aLightData);//ライトデータのみ追加する
     
@@ -207,7 +210,7 @@ MStatus MyShader::initialize(){
     attributeAffects(aNormalCamera, aOutColor);
     attributeAffects(aRayDirection, aOutColor);
     //ここからライトの入力アトリビュートと出力アトリビュートの関係を宣言する
-    attributeAffects(aLightData, aOutColor);
+    
     
     attributeAffects(aLightAmbient, aOutColor);
     attributeAffects(aLightDiffuse, aOutColor);
@@ -216,15 +219,20 @@ MStatus MyShader::initialize(){
     attributeAffects(aLightShadowFraction, aOutColor);
     attributeAffects(aPreShadowIntensity, aOutColor);
     attributeAffects(aLightBlindData, aOutColor);
+    attributeAffects(aLightData, aOutColor);
     
     
-    return MStatus::kSuccess;
+    return MS::kSuccess;
 }
 
 //レンダリング計算を行う（レイとサーフェスが交差する）たびに呼び出される。
 //plug :　どのアトリビュートのための計算処理か
 //block : シーンデータ
 MStatus MyShader::compute(const MPlug &plug, MDataBlock &block){
+    
+    // The plug parameter will allow us to determine which output attribute
+    // needs to be calculated.
+    
     
     //もし計算対象のアトリビュートがaOutColorに対してでは無い場合は強制終了
     if(plug != aOutColor){
@@ -240,8 +248,8 @@ MStatus MyShader::compute(const MPlug &plug, MDataBlock &block){
     MFloatVector &surfaceColor = block.inputValue(aColor).asFloatVector();//表面の色
     MFloatVector &borderColor = block.inputValue(aBorder).asFloatVector();//境界線の色
     float borderArea = block.inputValue(aBorderArea).asFloat();//ボーダーの範囲
-    
-    
+//
+//    
     
     
     //出力アトリビュートのためのハンドルを取得
@@ -250,29 +258,36 @@ MStatus MyShader::compute(const MPlug &plug, MDataBlock &block){
     
     
     //出力はアトリビュート"surfaceColor"とする
-        resultColor = surfaceColor;
-    
+    resultColor = surfaceColor;
         //Diffusionの処理
-    
         MArrayDataHandle LightHandle = block.inputArrayValue(aLightData);
         int lightCount = LightHandle.elementCount();
-        cout << "lightCount: " << lightCount << endl;
-        for(int ii=0;ii< lightCount;ii++){
+    
+        for(int ii=0;ii < lightCount;ii++){
             MDataHandle currentLight = LightHandle.inputValue();
             
             MFloatVector &lightIntensity = currentLight.child(aLightIntensity).asFloatVector();
-            MFloatVector &lightDirection = currentLight.child(aLightDirection).asFloatVector();
+                        
+            if(currentLight.child(aLightAmbient).asBool()){
+                resultColor += lightIntensity;
+            }
             
+            if(currentLight.child(aLightDiffuse).asBool()){
+                MFloatVector &lightDirection = currentLight.child(aLightDirection).asFloatVector();
+                float cosln = lightDirection * surfaceNormal;
+               
+                
+                MFloatVector lambert;
+                lambert[0] = cosln * lightIntensity[0];
+                lambert[1] = cosln * lightIntensity[1];
+                lambert[2] = cosln * lightIntensity[2];
+                
+                resultColor += lambert;
+            }
             
-            float NL = lightDirection * surfaceNormal;//N•L value
-            MFloatVector lambertDiffuse;
-            lambertDiffuse[0] = NL * lightIntensity[0];
-            lambertDiffuse[1] = NL * lightIntensity[1];
-            lambertDiffuse[2] = NL * lightIntensity[2];
-            
-            resultColor += lambertDiffuse;
-            
-            LightHandle.next();//次のライトへ
+//            if ( ii < lightCount ) {
+                LightHandle.next();
+//            }
         }
 //
     
@@ -293,7 +308,7 @@ MStatus MyShader::compute(const MPlug &plug, MDataBlock &block){
     //ハンドルを通じて通知
     outColorHandle.setClean();
     
-   return MStatus::kSuccess;
+   return MS::kSuccess;
 }
 
 //-----------------------------------------------------------------------------
@@ -302,8 +317,8 @@ MStatus initializePlugin (MObject obj) {
 	//- this method is called when the plug-in is loaded into Maya. It 
 	//- registers all of the services that this plug-in provides with Maya.
 	//-		obj - a handle to the plug-in object (use MFnPlugin to access it)
-	MFnPlugin plugin (obj, _T("Vendor Name"), _T("Version"), _T("Any"));
-    
+	MFnPlugin plugin (obj, PLUGIN_COMPANY, "1.0.0", "Any");
+    MString command( "if( `window -exists createRenderNodeWindow` ) {refreshCreateRenderNodeWindow(\"" );
     const MString user_classify("shader/surface");
     
     plugin.registerNode("MyShader",
@@ -312,6 +327,14 @@ MStatus initializePlugin (MObject obj) {
                         MyShader::initialize,
                         MPxNode::kDependNode,
                         &user_classify);
+    
+    
+    command += user_classify;
+    
+    command += "\");}\n";
+    
+    CHECK_MSTATUS( MGlobal::executeCommand( command ) );
+
     //- Examples:
 	//NodeRegisterOk(plugin.registerNode (_T("myNode"), myNode::id, myNode::creator, myNode::initialize)) ;
 	//NodeRegisterOk(myNode::registerMe (plugin)) ;

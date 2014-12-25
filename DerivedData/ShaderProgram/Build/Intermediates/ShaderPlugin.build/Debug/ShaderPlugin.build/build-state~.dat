@@ -1,0 +1,137 @@
+TShaderPlugin
+v5
+r1
+cCheck dependencies
+cCompileC /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/plugin.o /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/StdAfx.o /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/StdAfx.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+
+N/Applications/Autodesk/maya2014/devkit/include/maya/OpenMayaMac.h
+c0000000052554F790000000000000C07
+t1381322617
+s3079
+i<AvailabilityMacros.h>
+i<sys/param.h>
+i<CoreServices/CoreServices.h>
+
+N/System/Library/Frameworks/CoreServices.framework/Headers/CoreServices.h
+c00000000545D945E0000000000000409
+t1415418974
+s1033
+
+N/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/ShaderPlugin.LinkFileList
+c00000000549A566E0000000000000148
+t1419400814
+s328
+
+N/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/StdAfx.o
+t2
+s0
+
+N/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/plugin.o
+t2
+s0
+
+N/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug/ShaderPlugin.bundle
+t2
+s0
+
+N/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/StdAfx.cpp
+c00000000548C4E890000000000000204
+t1418481289
+s516
+
+N/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp
+c00000000549A565A0000000000003820
+t1419400794
+s14368
+
+N/usr/include/AvailabilityMacros.h
+c00000000545D9462000000000000E4D5
+t1415418978
+s58581
+
+N/usr/include/sys/param.h
+c00000000545D946400000000000027C3
+t1415418980
+s10179
+
+CBuild AST from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/StdAfx.cpp
+r0
+
+CBuild AST from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp
+r0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesbe4afeee8d4aba41^eca4feee8d4aba41^---0#1#0#--18"Check dependencies36"1174264E-A21F-4151-BF95-02CF8B1ACA37-
+
+CCompileC /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/StdAfx.o /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/StdAfx.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s441093614.998183
+e441093616.313212
+r1
+xCompileC
+x/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/StdAfx.o
+x/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/StdAfx.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+oIn file included from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/StdAfx.cpp:14:
+oIn file included from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/StdAfx.h:26:
+o/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/mayaHeaders.h:28:15: warning: extra tokens at end of #ifdef directive [-Wextra-tokens]
+o#ifdef defined(NT_PLUGIN) && !defined(_MANAGED)
+o              ^
+o              //
+o1 warning generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection87"Compile /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/StdAfx.cpp63b3ffee8d4aba41^5e3050f08d4aba41^-468"In file included from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/StdAfx.cpp:14:In file included from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/StdAfx.h:26:/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/mayaHeaders.h:28:15: warning: extra tokens at end of #ifdef directive [-Wextra-tokens]#ifdef defined(NT_PLUGIN) && !defined(_MANAGED)              ^              //1 warning generated.-0#0#0#-19%DVTDocumentLocation2@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/StdAfx.cpp0000000000000000^2639"CompileC /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/StdAfx.o ShaderPlugin/StdAfx.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin    setenv LANG en_US.US-ASCII    /Applications/Xcode4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=gnu++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DMAC_PLUGIN -D_BOOL -DREQUIRE_IOSTREAM -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -g -fvisibility-inlines-hidden -Wno-sign-conversion -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/ShaderPlugin.hmap -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug/include -I. -I/Applications/Autodesk/maya2014/devkit/include -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/DerivedSources/x86_64 -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/DerivedSources -F/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug -include /Applications/Autodesk/maya2014/devkit/include/maya/OpenMayaMac.h -MMD -MT dependencies -MF /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/StdAfx.d --serialize-diagnostics /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/StdAfx.dia -c /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/StdAfx.cpp -o /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/StdAfx.o36"A7057D9D-E59B-459A-800F-718AEE8EAB3C-
+
+CCompileC /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/plugin.o /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s441093614.998178
+e441093616.111669
+r0
+xCompileC
+x/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/plugin.o
+x/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+o/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:68:12: error: unknown type name 'MOBject'; did you mean 'MObject'?
+o    static MOBject aLightDirectionX;
+o           ^~~~~~~
+o           MObject
+o/Applications/Autodesk/maya2014/devkit/include/maya/MPxData.h:55:7: note: 'MObject' declared here
+oclass MObject;
+o      ^
+o/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:315:18: error: use of undeclared identifier 'count'; did you mean 'cout'?
+o            if ( count < numLights ) {
+o                 ^~~~~
+o                 cout
+o/Applications/Xcode4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1/iostream:49:32: note: 'cout' declared here
+oextern _LIBCPP_VISIBLE ostream cout;
+o                               ^
+o/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:315:26: error: use of undeclared identifier 'numLights'
+o            if ( count < numLights ) {
+o                         ^
+o/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:316:17: error: use of undeclared identifier 'status'
+o                status = lightData.next();
+o                ^
+o/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:316:26: error: use of undeclared identifier 'lightData'; did you mean 'aLightData'?
+o                status = lightData.next();
+o                         ^~~~~~~~~
+o                         aLightData
+o/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:90:19: note: 'aLightData' declared here
+oMObject MyShader::aLightData;
+o                  ^
+o/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:316:36: error: no member named 'next' in 'MObject'
+o                status = lightData.next();
+o                         ~~~~~~~~~ ^
+o/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:347:25: error: use of undeclared identifier '_T'
+o        MFnPlugin plugin (obj, _T("Vendor Name"), _T("Version"), _T("Any"));
+o                               ^
+o7 errors generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection87"Compile /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp96b3ffee8d4aba41^048e1cf08d4aba41^-2110"/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:68:12: error: unknown type name 'MOBject'; did you mean 'MObject'?    static MOBject aLightDirectionX;           ^~~~~~~           MObject/Applications/Autodesk/maya2014/devkit/include/maya/MPxData.h:55:7: note: 'MObject' declared hereclass MObject;      ^/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:315:18: error: use of undeclared identifier 'count'; did you mean 'cout'?            if ( count < numLights ) {                 ^~~~~                 cout/Applications/Xcode4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1/iostream:49:32: note: 'cout' declared hereextern _LIBCPP_VISIBLE ostream cout;                               ^/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:315:26: error: use of undeclared identifier 'numLights'            if ( count < numLights ) {                         ^/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:316:17: error: use of undeclared identifier 'status'                status = lightData.next();                ^/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:316:26: error: use of undeclared identifier 'lightData'; did you mean 'aLightData'?                status = lightData.next();                         ^~~~~~~~~                         aLightData/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:90:19: note: 'aLightData' declared hereMObject MyShader::aLightData;                  ^/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:316:36: error: no member named 'next' in 'MObject'                status = lightData.next();                         ~~~~~~~~~ ^/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp:347:25: error: use of undeclared identifier '_T'        MFnPlugin plugin (obj, _T("Vendor Name"), _T("Version"), _T("Any"));                               ^7 errors generated.7(36%IDEClangDiagnosticActivityLogMessage2@52"Unknown type name 'MOBject'; did you mean 'MObject'?-441093616#18446744073709551615#0#1(2@23"'MObject' declared here-441093616#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@77"file://localhost/Applications/Autodesk/maya2014/devkit/include/maya/MPxData.h0000000000000000^54#6#54#6#2260#0#14"Semantic Issue--2#27"com.apple.dt.IDE.diagnostic3@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp0000000000000000^67#11#67#11#2391#0#14"Semantic Issue1(3@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp0000000000000000^67#11#67#18#2391#7#-2@58"Use of undeclared identifier 'count'; did you mean 'cout'?-441093616#18446744073709551615#0#1(2@20"'cout' declared here-441093616#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@119"file://localhost/Applications/Xcode4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/c++/v1/iostream0000000000000000^48#31#48#31#1006#0#14"Semantic Issue--2#27"com.apple.dt.IDE.diagnostic3@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp0000000000000000^314#17#314#17#12272#0#14"Semantic Issue1(3@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp0000000000000000^314#17#314#22#12272#5#-2@40"Use of undeclared identifier 'numLights'-441093616#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp0000000000000000^314#25#314#25#12280#0#14"Semantic Issue--2@37"Use of undeclared identifier 'status'-441093616#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp0000000000000000^315#16#315#16#12310#0#14"Semantic Issue--2@68"Use of undeclared identifier 'lightData'; did you mean 'aLightData'?-441093616#18446744073709551615#0#1(2@26"'aLightData' declared here-441093616#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp0000000000000000^89#18#89#18#3138#0#14"Semantic Issue--2#27"com.apple.dt.IDE.diagnostic3@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp0000000000000000^315#25#315#25#12319#0#14"Semantic Issue1(3@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp0000000000000000^315#25#315#34#12319#9#-2@35"No member named 'next' in 'MObject'-441093616#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp0000000000000000^315#35#315#35#12329#0#14"Semantic Issue1(3@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp0000000000000000^315#25#315#34#12319#0#-2@33"Use of undeclared identifier '_T'-441093616#18446744073709551615#0#-2#27"com.apple.dt.IDE.diagnostic3@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp0000000000000000^346#24#346#24#13240#0#14"Semantic Issue--0#0#0#-19%DVTDocumentLocation4@95"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp0000000000000000^2639"CompileC /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/plugin.o ShaderPlugin/plugin.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin    setenv LANG en_US.US-ASCII    /Applications/Xcode4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=gnu++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DMAC_PLUGIN -D_BOOL -DREQUIRE_IOSTREAM -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -g -fvisibility-inlines-hidden -Wno-sign-conversion -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/ShaderPlugin.hmap -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug/include -I. -I/Applications/Autodesk/maya2014/devkit/include -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/DerivedSources/x86_64 -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/DerivedSources -F/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug -include /Applications/Autodesk/maya2014/devkit/include/maya/OpenMayaMac.h -MMD -MT dependencies -MF /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/plugin.d --serialize-diagnostics /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/plugin.dia -c /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/ShaderPlugin/plugin.cpp -o /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/ShaderPlugin.build/Debug/ShaderPlugin.build/Objects-normal/x86_64/plugin.o36"98882A1B-D578-4FC5-97EB-6925A3E10EA8-
+
+CLd /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug/ShaderPlugin.bundle normal x86_64
+r0
+

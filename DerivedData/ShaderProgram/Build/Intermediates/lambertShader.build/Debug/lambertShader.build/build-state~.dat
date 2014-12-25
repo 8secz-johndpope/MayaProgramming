@@ -1,0 +1,93 @@
+TlambertShader
+v5
+r1
+cCheck dependencies
+cCompileC /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/plugin.o /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/plugin.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/StdAfx.o /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug/lambertShader.bundle normal x86_64
+
+N/Applications/Autodesk/maya2014/devkit/include/maya/OpenMayaMac.h
+c0000000052554F790000000000000C07
+t1381322617
+s3079
+
+N/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/StdAfx.o
+t2
+s0
+
+N/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/lambertShader.LinkFileList
+c00000000549C07EC000000000000014C
+t1419511788
+s332
+
+N/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/plugin.o
+t2
+s0
+
+N/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug/lambertShader.bundle
+t2
+s0
+
+N/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.cpp
+c000000005494780B0000000000000205
+t1419016203
+s517
+
+N/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/plugin.cpp
+c00000000549478BB0000000000008C7E
+t1419016379
+s35966
+
+CBuild AST from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.cpp
+r0
+
+CBuild AST from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/plugin.cpp
+r0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies2c83a66c3f4cba41^da39b16c3f4cba41^---0#1#0#--18"Check dependencies36"B31D08AD-2F43-4FC1-9253-8545020600BD-
+
+CCompileC /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/StdAfx.o /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s441204588.692859
+e441204590.369178
+r1
+xCompileC
+x/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/StdAfx.o
+x/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+oIn file included from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.cpp:14:
+oIn file included from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.h:26:
+o/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/mayaHeaders.h:28:15: warning: extra tokens at end of #ifdef directive [-Wextra-tokens]
+o#ifdef defined(NT_PLUGIN) && !defined(_MANAGED)
+o              ^
+o              //
+o1 warning generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Compile /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.cppe674b16c3f4cba41^fe815e6e3f4cba41^-513"In file included from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.cpp:14:In file included from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.h:26:/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/mayaHeaders.h:28:15: warning: extra tokens at end of #ifdef directive [-Wextra-tokens]#ifdef defined(NT_PLUGIN) && !defined(_MANAGED)              ^              //1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@39"Extra tokens at end of #ifdef directive-441204590#18446744073709551615#0#2(2@120"In file included from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.cpp:14:-441204590#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@110"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.cpp0000000000000000^13#9#13#9#506#0#21"Clang LLVM 1.0 Notice--2@118"In file included from /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.h:26:-441204590#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@108"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.h0000000000000000^25#9#25#9#967#0#21"Clang LLVM 1.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@113"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/mayaHeaders.h0000000000000000^27#14#27#14#1105#0#29"Lexical or Preprocessor Issue1(3@113"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/mayaHeaders.h0000000000000000^27#14#27#14#1105#0#-0#0#0#-19%DVTDocumentLocation4@110"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.cpp0000000000000000^2684"CompileC /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/StdAfx.o lambertShader/StdAfx.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader    setenv LANG en_US.US-ASCII    /Applications/Xcode4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=gnu++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DMAC_PLUGIN -D_BOOL -DREQUIRE_IOSTREAM -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -g -fvisibility-inlines-hidden -Wno-sign-conversion -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/lambertShader.hmap -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug/include -I. -I/Applications/Autodesk/maya2014/devkit/include -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/DerivedSources/x86_64 -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/DerivedSources -F/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug -include /Applications/Autodesk/maya2014/devkit/include/maya/OpenMayaMac.h -MMD -MT dependencies -MF /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/StdAfx.d --serialize-diagnostics /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/StdAfx.dia -c /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/StdAfx.cpp -o /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/StdAfx.o36"D1222521-D7D5-4CCE-9AEF-F1EB1F2B0405-
+
+CCompileC /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/plugin.o /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/plugin.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s441204588.692856
+e441204589.800993
+r1
+xCompileC
+x/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/plugin.o
+x/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/plugin.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Compile /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/plugin.cppd175b16c3f4cba41^8d0dcd6d3f4cba41^---0#0#0#-19%DVTDocumentLocation2@110"file://localhost/Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/plugin.cpp0000000000000000^2684"CompileC /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/plugin.o lambertShader/plugin.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader    setenv LANG en_US.US-ASCII    /Applications/Xcode4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=gnu++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DMAC_PLUGIN -D_BOOL -DREQUIRE_IOSTREAM -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -g -fvisibility-inlines-hidden -Wno-sign-conversion -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/lambertShader.hmap -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug/include -I. -I/Applications/Autodesk/maya2014/devkit/include -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/DerivedSources/x86_64 -I/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/DerivedSources -F/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug -include /Applications/Autodesk/maya2014/devkit/include/maya/OpenMayaMac.h -MMD -MT dependencies -MF /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/plugin.d --serialize-diagnostics /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/plugin.dia -c /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader/lambertShader/plugin.cpp -o /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/plugin.o36"7C26B166-112A-466C-AF8D-79F21A632947-
+
+CLd /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug/lambertShader.bundle normal x86_64
+s441204590.369269
+e441204590.416211
+r1
+xLd
+x/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug/lambertShader.bundle
+xnormal
+xx86_64
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection115"Link /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug/lambertShader.bundle0b965e6e3f4cba41^438d6a6e3f4cba41^---0#0#0#--1156"Ld /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug/lambertShader.bundle normal x86_64    cd /Users/tetsushi2/Documents/MayaProgramming/ShaderPlugin/lambertShader    /Applications/Xcode4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -bundle -L/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug -L/Applications/Autodesk/maya2014/Maya.app/Contents/MacOS -F/Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug -filelist /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Intermediates/lambertShader.build/Debug/lambertShader.build/Objects-normal/x86_64/lambertShader.LinkFileList -Wl,-executable_path,/Applications/Autodesk/maya2014/Maya.app/Contents/MacOS -Wl,-exported_symbol,__Z16initializePlugin7MObject -Wl,-exported_symbol,__Z18uninitializePlugin7MObject -lOpenMaya -lOpenMayaAnim -lOpenMayaRender -lOpenMayaUI -lFoundation -stdlib=libc++ -single_module -o /Users/tetsushi2/Documents/MayaProgramming/DerivedData/ShaderProgram/Build/Products/Debug/lambertShader.bundle36"B15CBEEC-96D2-4B83-8CC4-DD4195FE000B-
+
