@@ -1,0 +1,23 @@
+<RCC>
+  <qresource prefix="images">
+    <file>image/001_0000_rightEye_pressed.jpg</file>
+    <file>image/001_0000_rightEye.jpg</file>
+    <file>image/001_0001_leftEye_pressed.png</file>
+    <file>image/001_0001_leftEye.png</file>
+    <file>image/001_0002_nose_pressed.png</file>
+    <file>image/001_0002_nose.png</file>
+    <file>image/001_0003_mouse_pressed.png</file>
+    <file>image/001_0003_mouse.png</file>
+    <file>image/001_0004_jaw_pressed.png</file>
+    <file>image/001_0004_jaw.png</file>
+    <file>image/001_0005_leftCheek_pressed.png</file>
+    <file>image/001_0005_leftCheek.png</file>
+    <file>image/001_0006_rightCheek_pressed.png</file>
+    <file>image/001_0006_rightCheek.png</file>
+    <file>image/001_0007_rightBrown _pressed.png</file>
+    <file>image/001_0007_rightBrown.png</file>
+    <file>image/001_0008_leftBrown_pressed.png</file>
+    <file>image/001_0008_leftBrown.png</file>
+    <file>image/001_0009_base.png</file>
+  </qresource>
+</RCC>
