@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>693</width>
+    <height>284</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>693</width>
+    <height>284</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>693</width>
+    <height>284</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>FacialRigger</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>0</y>
+     <width>671</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>42</width>
+     <height>26</height>
+    </size>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>JointSet</string>
+    </attribute>
+    <widget class="QFrame" name="frame">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>281</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="imageLabel">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>224</width>
+        <height>204</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/images/image/001_0009_base.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>170</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	background-repeat: none;
+border: none;
+}
+
+#pushButton{
+	
+	background-image: url(:/images/image/001_0003_mouse.png);
+
+}
+#pushButton:pressed{
+	
+	background-image: url(:/images/image/001_0003_mouse_pressed.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="noseButton">
+      <property name="geometry">
+       <rect>
+        <x>135</x>
+        <y>150</y>
+        <width>21</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	background-repeat: none;
+border: none;
+}
+#noseButton{
+	background-image: url(:/images/image/001_0002_nose.png);
+}
+#noseButton:pressed{
+	background-image: url(:/images/image/001_0002_nose_pressed.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="leftEyeButton">
+      <property name="geometry">
+       <rect>
+        <x>155</x>
+        <y>105</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	background-repeat: none;
+border: none;
+}
+
+#leftEyeButton{
+	background-image: url(:/images/image/001_0001_leftEye.png);
+}
+#leftEyeButton:pressed{
+	background-image: url(:/images/image/001_0001_leftEye_pressed.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="rightEyeButton">
+      <property name="geometry">
+       <rect>
+        <x>88</x>
+        <y>105</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	background-repeat: none;
+border: none;
+}
+
+#rightEyeButton{
+	background-image: url(:/images/image/001_0000_rightEye.jpg);
+}
+#rightEyeButton:pressed{
+	
+	background-image: url(:/images/image/001_0000_rightEye_pressed.jpg);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="leftCheekButton">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>158</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	background-repeat: none;
+border: none;
+}
+
+#leftCheekButton{
+	background-image: url(:/images/image/001_0005_leftCheek.png);
+}
+#leftCheekButton:pressed{
+	
+	background-image: url(:/images/image/001_0005_leftCheek_pressed.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="leftEyeBrownButton">
+      <property name="geometry">
+       <rect>
+        <x>159</x>
+        <y>90</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	background-repeat: none;
+border: none;
+}
+
+#leftEyeBrownButton{
+	
+	background-image: url(:/images/image/001_0008_leftBrown.png);
+}
+#leftEyeBrownButton:pressed{
+	
+	background-image: url(:/images/image/001_0008_leftBrown_pressed.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="rightEyeBrownButton">
+      <property name="geometry">
+       <rect>
+        <x>94</x>
+        <y>85</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	background-repeat: none;
+border: none;
+}
+
+#rightEyeBrownButton{
+	background-image: url(:/images/image/001_0007_rightBrown.png);
+}
+#rightEyeBrownButton:pressed{
+	background-image: url(:/images/image/001_0007_rightBrown _pressed.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="rightCheekButton">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>160</y>
+        <width>31</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	background-repeat: none;
+border: none;
+}
+
+#rightCheekButton{
+	background-image: url(:/images/image/001_0006_rightCheek.png);
+}
+#rightCheekButton:pressed{
+	
+	background-image: url(:/images/image/001_0006_rightCheek_pressed.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="jawButton">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>193</y>
+        <width>41</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	background-repeat: none;
+border: none;
+}
+
+#jawButton{
+	background-image: url(:/images/image/001_0004_jaw.png);
+}
+#jawButton:pressed{
+	
+	background-image: url(:/images/image/001_0004_jaw_pressed.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>Controller</string>
+    </attribute>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="image@2x.qrc"/>
+ </resources>
+ <connections/>
+</ui>
