@@ -83,6 +83,23 @@ class riggingTools(base, form_class):
         pm.select(self.baseHead[0])
         self.faceCurveButton.setEnabled(True)
         #cmds.FBXImport(f=filePath)
+
+    def makeBaseFacial(self):
+        selectObj = self.baseHead
+        filePath = os.path.dirname(__file__) + "data/vertex.csv"
+        for line in open(filePath, 'r'):
+            selectList = line.split(',')
+            pList = []
+            for n in selectList[1:]:
+                #読み込んだ物はstr型になってるため、intに修正
+                ii = int(n)      
+                p = selectObj.vtx[ii].getPosition(space='world')
+                pList.append(p)
+            
+            pList.append(p)
+            #２次ベジェ曲線で作成する
+            pmCurve=pm.curve(p=pList, degree=2)
+            pmCurve.rename(selectList[0])
 #main
 
 
