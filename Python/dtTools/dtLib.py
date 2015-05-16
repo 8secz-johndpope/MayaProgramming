@@ -103,9 +103,9 @@ class dtLib():
     position: (オプション)指定位置、デフォルトでは0に設定
     '''
     @staticmethod
-    def setToCurve(target, object, position=0):
+    def setToCurve(target, objectData, position=0):
         #pathAnimationを指定.fractionMode=Trueにすることで0~1にu値を正規化
-         motionPathName=pm.pathAnimation(object, curve=target, fractionMode=True)
+         motionPathName=pm.pathAnimation(objectData, curve=target, fractionMode=True)
          #文字列をstr型で使いたいためAsciiコードに変換
          ascPathName = motionPathName.encode('ascii')
          pm.setAttr(ascPathName+".uValue", position)
