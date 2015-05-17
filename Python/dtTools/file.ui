@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>522</width>
-    <height>785</height>
+    <width>530</width>
+    <height>797</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,24 +18,24 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>0</y>
-      <width>501</width>
+      <y>10</y>
+      <width>511</width>
       <height>761</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>Creation</string>
+      <string>CreationTools</string>
      </attribute>
      <widget class="QScrollArea" name="scrollArea">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>491</width>
+        <width>501</width>
         <height>731</height>
        </rect>
       </property>
@@ -47,7 +47,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>489</width>
+         <width>499</width>
          <height>729</height>
         </rect>
        </property>
@@ -183,7 +183,7 @@
          <property name="geometry">
           <rect>
            <x>30</x>
-           <y>51</y>
+           <y>30</y>
            <width>401</width>
            <height>51</height>
           </rect>
@@ -218,14 +218,76 @@
           </item>
          </layout>
         </widget>
+        <widget class="QPushButton" name="BlendShapeButton">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>90</y>
+           <width>113</width>
+           <height>32</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>BlendShape</string>
+         </property>
+        </widget>
        </widget>
       </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>Control</string>
+      <string>facialControl</string>
      </attribute>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QGraphicsView" name="renderView"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="renderButton">
+          <property name="text">
+           <string>RenderFaceCam</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolBox" name="controlToolBox">
+          <property name="currentIndex">
+           <number>1</number>
+          </property>
+          <widget class="QWidget" name="page">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>453</width>
+             <height>257</height>
+            </rect>
+           </property>
+           <attribute name="label">
+            <string>Page 1</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="page_2">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>453</width>
+             <height>257</height>
+            </rect>
+           </property>
+           <attribute name="label">
+            <string>Page 2</string>
+           </attribute>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
    </widget>
   </widget>

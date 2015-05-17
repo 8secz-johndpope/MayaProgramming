@@ -10,9 +10,8 @@ import maya.cmds as cmds
 class dtLib():
     '''
     classdocs
+    よく使うような機能をまとたスタティックライブラリ
     '''
-
-
     def __init__(self, params):
         '''
         Constructor
@@ -27,10 +26,10 @@ class dtLib():
     '''   
     @staticmethod
     def addManyJoint(firstJoint, secondJoint, num=1):
-         jointRadius = firstJoint.getRadius()
-         firstPoint = firstJoint.getTranslation(space='world')
-         secondPoint = secondJoint.getTranslation(space='world')
-         for n in range(0,num):
+        jointRadius = firstJoint.getRadius()
+        firstPoint = firstJoint.getTranslation(space='world')
+        secondPoint = secondJoint.getTranslation(space='world')
+        for n in range(0,num):
             newJoint = pm.insertJoint(firstJoint)
             #追加したジョイントの位置を計算する
             px = secondPoint[0] + (((firstPoint[0]-secondPoint[0])/(num+1))*(n+1))
@@ -105,11 +104,11 @@ class dtLib():
     @staticmethod
     def setToCurve(target, objectData, position=0):
         #pathAnimationを指定.fractionMode=Trueにすることで0~1にu値を正規化
-         motionPathName=pm.pathAnimation(objectData, curve=target, fractionMode=True)
-         #文字列をstr型で使いたいためAsciiコードに変換
-         ascPathName = motionPathName.encode('ascii')
-         pm.setAttr(ascPathName+".uValue", position)
-         pm.disconnectAttr(ascPathName+".uValue")
+        motionPathName=pm.pathAnimation(objectData, curve=target, fractionMode=True)
+        #文字列をstr型で使いたいためAsciiコードに変換
+        ascPathName = motionPathName.encode('ascii')
+        pm.setAttr(ascPathName+".uValue", position)
+        pm.disconnectAttr(ascPathName+".uValue")
     
     
     

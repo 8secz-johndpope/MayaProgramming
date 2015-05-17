@@ -11,7 +11,7 @@ from PyQt4 import QtCore, QtGui, uic
 import maya.OpenMayaUI as omau
 import sip
 import dtLib as dLib
-from dtTools import dtLib
+import imageViewScene as ivScene
 
 def getMayaMainWindow():
     accessMainWindow = omau.MQtUtil.mainWindow()
@@ -25,6 +25,8 @@ form_class, base = uic.loadUiType(uifile=uiFile)
 
 class riggingTools(base, form_class):
     baseHead=None
+    renderCam=None
+    imageScene=None
     facialCurves = []
     def __init__(self, parent=getMayaMainWindow()):
         super(base,self).__init__(parent)
@@ -85,9 +87,12 @@ class riggingTools(base, form_class):
         self.baseHead = dLib.dtLib.loadFbx(os.path.dirname(__file__) + "/data/obj/baseHead.fbx")
         pm.select(self.baseHead[0])
         self.faceCurveButton.setEnabled(True)
-        #cmds.FBXImport(f=filePath)
+        #cmds.FBXImport(f=fi  lePath)
 
     def makeBaseFacial(self):
+        '''
+        フェイシャルリグ生成の為のカーブを作成する
+        '''
         filePath = os.path.dirname(__file__) + "/data/vertex.csv"
         for line in open(filePath, 'r'):
             selectList = line.split(',')
@@ -105,7 +110,11 @@ class riggingTools(base, form_class):
             self.facialCurves.append(pmCurve)
         self.facialJointButton.setEnabled(True)
         
+
     def makeFacialJoint(self):
+        '''
+        顔にフェイシャルリグのテンプレートを生成する
+        '''
         lipCurve = [i for i in self.facialCurves if i[:].encode("ascii").find("lip") >= 0]
         noseCurve = [i for i in self.facialCurves if i[:].encode("ascii").find("nose") >= 0]
         otherCurves = [i for i in self.facialCurves if i[:].encode("ascii").find("lip") < 0 and i[:].encode("ascii").find("nose") < 0]
@@ -196,6 +205,26 @@ class riggingTools(base, form_class):
                 offsetJoint.setTranslation([0,0,0])
                 pm.parent(locatorData, locGroup)
         
+        
+        self.imageScene = ivScene.imageViewScene()
+        
+        
+        #顔の画像を画像ビューに入れる
+
+        filePath = os.path.dirname(__file__) + "/data/image/tmp.jpg"
+        self.imageScene.setSceneRect( QtCore.QRectF( self.renderView.rect() ) )
+        self.imageScene.setFile(filePath)
+        
+        
+        ellipse = ivScene.GraphicsEllipseButton(120,50,50,50)
+        ellipse.setCallback(callback=self.callbackFunc)
+        ellipse.setBrush(QtGui.QBrush(QtGui.QColor('pink')))
+        self.imageScene.addItem(ellipse)
+        
+        self.renderView.setScene(self.imageScene)
+        self.renderView.show()
+    def callbackFunc(self):
+        print "Hello"
 #main
 
 
